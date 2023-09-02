@@ -3,13 +3,13 @@ include $(OS_HOME)/common.mk
 SRCS_ASM := $(wildcard $(SRC_DIR)/*.S)
 SRCS_C   := $(wildcard $(SRC_DIR)/*.c)
 
-OBJS = $(SRCS_ASM:.S=.o)
-OBJS += $(SRCS_C:.c=.o)
+#OBJS = $(SRCS_ASM:.S=.o)
+#OBJS += $(SRCS_C:.c=.o)
 
 # OBJS = $(subst $(SRC_DIR),$(BUILD_DIR),$(OBJS))
+OBJS = $(patsubst $(SRC_DIR)/%.S,$(BUILD_DIR)/%.o,$(SRCS_ASM))
+OBJS +=  $(patsubst $(SRC_DIR)/%.c,$(BUILD_DIR)/%.o,$(SRCS_C))
 
-OBJS =  $(patsubst $(SRC_DIR)/%.c,$(BUILD_DIR)/%.o,$(SRCS_C))
-OBJS += $(patsubst $(SRC_DIR)/%.S,$(BUILD_DIR)/%.o,$(SRCS_ASM))
 
 
 TARGET_ELF = $(BUILD_DIR)/kernel.elf
@@ -40,5 +40,13 @@ run : all
 	@echo "------------------------------------"
 	@${QEMU} ${QFLAGS} -kernel $(TARGET_ELF)
 
+.PHONY : debug
+debug: all
+	@echo "Press Ctrl-C and then input 'quit' to exit GDB and QEMU"
+	@echo "-------------------------------------------------------"
+	@${QEMU} ${QFLAGS} -kernel $(TARGET_ELF) -s -S &
+	@${GDB} $(TARGET_ELF) -q -x gdbinit
+
+
 clean :
-	rm -rf *.o *.bin *.elf
+	rm -rf $(BUILD_DIR)
