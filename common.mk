@@ -8,6 +8,7 @@ QEMU = qemu-system-riscv64
 QFLAGS = -nographic -smp 1 -machine virt -bios none
 
 GDB = gdb-multiarch
-CC = ${CROSS_COMPILE}gcc
+CC  = ${CROSS_COMPILE}gcc
+CPP = ${CROSS_COMPILE}g++
 OBJCOPY = ${CROSS_COMPILE}objcopy
 OBJDUMP = ${CROSS_COMPILE}objdump

@@ -73,7 +73,7 @@ int uart_putc(char ch)
     return WriteReg(THR, ch);
 }
 
-void uart_puts(char *s)
+void uart_puts(const char *s)
 {
 	while (*s) {
 		uart_putc(*s++);
