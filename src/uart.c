@@ -1,6 +1,6 @@
 
 #include "type.h"
-
+#include "defs.h"
 #define UART0 0x10000000L //uart regesters address
 
 /*MemoryMap:
