@@ -19,6 +19,5 @@
 park:
     wfi
     j park
-stacks:
-    .skip	STACK_SIZE * MAX_CPU
+
     .end
