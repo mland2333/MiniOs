@@ -54,3 +54,8 @@ debug: all
 
 clean :
 	rm -rf $(BUILD_DIR)
+
+once : clean run
+	
+
+
