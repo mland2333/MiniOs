@@ -1,6 +1,7 @@
 #include "stdio.h"
 #include "defs.h"
 #include "type.h"
+#include "template.h"
 int printf(const char* fmt, ...)
 {
      va_list ap;
@@ -8,10 +9,8 @@ int printf(const char* fmt, ...)
      char *s;
      uint64_t ptr;
      int num;
-     char digits[] = "0123456789abcdef";
-     char buf[33];
      int res = 0;
-     int j = 0;
+     MyPrint print;
      for(int i = 0; fmt[i]!='\0'; i++)
      {
          if(fmt[i] != '%')
@@ -26,7 +25,7 @@ int printf(const char* fmt, ...)
          {
              case 's':
                  if((s=va_arg(ap, char*)) == 0)
-                     s = "null";
+                     s = const_cast<char*>("null");
                  for(;*s!=0;s++) 
                  {
                      uart_putc(*s);
@@ -38,13 +37,7 @@ int printf(const char* fmt, ...)
                  uart_putc('0');
                  uart_putc('x');
                  res+=2;
-                 for(j = 0; j < sizeof(uint64_t)*2; j++)
-                 {
-                     buf[15-j] = digits[(ptr >> (j*4)) & 0xf];
-                     res++;
-                 }
-                 buf[16] = 0;
-                 uart_puts(buf);
+                 res += print(ptr, 16);
                  break;
              case 'd':
                  num = va_arg(ap, int);
@@ -54,15 +47,8 @@ int printf(const char* fmt, ...)
                      num = -num;
                      res++;
                  }
-                 j = 0;
-                 do
-                 {
-                     buf[j++] = digits[num%10];
-                     num /= 10;
-                     res++;
-                 }while(num != 0);
-                 for(;j>0; j--)
-                     uart_putc(buf[j-1]);
+                 res += print(num, 10);
+                
                  break;
              case 'x':
                  num = va_arg(ap, int);
@@ -75,18 +61,12 @@ int printf(const char* fmt, ...)
                  uart_putc('0');
                  uart_putc('x');
                  res+=2;
-                 j = 0;
-                 do
-                 {
-                     buf[j++] = digits[num%16];
-                     num >>= 4;
-                     res++;
-                 }while(num != 0);
-                 for(;j>0; j--)
-                     uart_putc(buf[j-1]);
+                 res += print(num, 16);
+                 
                  break;
 
          }
      }
+     va_end(ap);
      return res;
 }

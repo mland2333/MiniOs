@@ -1,4 +1,5 @@
 
+
 #include "type.h"
 #include "defs.h"
 #define UART0 0x10000000L //uart regesters address
@@ -42,6 +43,9 @@ bit5: 0 = transmit holding register is full. 16550 will not accept any data for 
 
 #define LSR_RX_READY (1 << 0)
 #define LSR_TX_IDLE  (1 << 5) 
+
+
+
 
 void uart_init()
 {
@@ -92,3 +96,4 @@ void uart_input()
         //uart_write_reg(THR, '\n');
     }
 }
+
