@@ -90,3 +90,8 @@ int printf(const char* fmt, ...)
      }
      return res;
 }
+
+void panic(const char *s)
+{
+    printf("panic : %s", s);
+}

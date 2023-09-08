@@ -19,5 +19,5 @@ typedef struct
 }context;
 
 void context_switch(context* new_context, context* old_context);
-void porc_init();
+void proc_init();
 void schedule();
