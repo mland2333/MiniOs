@@ -3,7 +3,7 @@
 #include "common.h"
 #include "riscv.h"
 
-#define PROC_NUM 16
+
 uint8_t __attribute__((aligned(16))) proc_stack[PROC_NUM][STACK_SIZE];
 
 cpu mcpu;

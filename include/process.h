@@ -1,6 +1,7 @@
 #pragma once
 #include "type.h"
 
+#define PROC_NUM 16
 
 typedef struct {
   reg_t ra;
