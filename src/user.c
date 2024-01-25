@@ -9,18 +9,22 @@ void daley(int count){
 
 
 void task0()
-{
-    printf("task0\n");
-    daley(100);
-    yield();
+{   
+    for(int i = 0; i < 10000; i++)
+    {
+        printf("task0:  %d\n", i);
+        daley(100);
+    }
     //while(1){}
 }
 
 void task1()
 {
-    printf("task1\n");
-    daley(100);
-    yield();
+    for(int i = 0; i < 10000; i++)
+    {
+        printf("task1:  %d\n", i);
+        daley(100);
+    }
 }
 
 void user_init()

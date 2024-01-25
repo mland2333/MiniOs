@@ -12,7 +12,7 @@ process proc[PROC_NUM];
 int proc_id = 0;
 void proc_init()
 {
-    w_mscratch(0);
+    write_csr(mscratch, 0);
     for(int i = 0; i < PROC_NUM; i++)
     {
         proc[i].state = EMPTY;
@@ -29,7 +29,6 @@ void yield()
 
 void schedule()
 {
-    context now;
     int i = proc_id;
     while(proc_id < PROC_NUM)
     {   
@@ -38,7 +37,7 @@ void schedule()
             proc[i].state = RUNNING;
             proc_id = i + 1;
             mcpu.proc = &proc[i];
-            context_switch(&now, &proc[i].mcontext);
+            switch_to(&proc[i].mcontext);
         }
         i++;
         if(i == PROC_NUM)

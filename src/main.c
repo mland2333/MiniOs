@@ -6,15 +6,16 @@
 __attribute__ ((aligned (16))) char stacks[4096 * MAX_CPU];     //为每个cpu都分配栈
 extern void user_init();
 
-void main()
+void kernel()
 {
     uart_init();
     page_init();        //物理页初始化
     proc_init();        //进程初始化
-    trap_init();
+    //trap_init();
     //printf("here\n");
     user_init();
     //printf("here\n");
     schedule();         //第一个进程
-    while(1) {}; 
+    while(1) {};
+    return 0;
 }
