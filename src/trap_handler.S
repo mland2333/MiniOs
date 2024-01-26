@@ -1,7 +1,7 @@
 .balign 256, 0
 .text 
-.global trap_vector
-trap_vector:
+.global trap_vector_m
+trap_vector_m:
     j exception_handler
     j default_handler
     j default_handler
@@ -10,6 +10,27 @@ trap_vector:
     j default_handler
     j default_handler
     j timer_handler
+    j default_handler
+    j default_handler
+    j default_handler
+    j external_handler
+    j default_handler
+    j default_handler
+    j default_handler
+    j default_handler
+
+.balign 256, 0
+.text 
+.global trap_vector_s
+trap_vector_s:
+    j exception_handler
+    j default_handler
+    j default_handler
+    j software_handler
+    j default_handler
+    j default_handler
+    j default_handler
+    j default_handler
     j default_handler
     j default_handler
     j default_handler
@@ -64,10 +85,11 @@ timer_handler:
     csrr t0, sscratch
     sd t0, 32(t1)
     //存储mepc
-    csrr t0, sepc
+    csrr t0, mepc
     sd t0, 248(t1)
 
     call timer_load
-    j yield
+    call trans_to_s
+    mret
     //不会返回,在switch_to中返回到另一个进程中
     

@@ -2,7 +2,8 @@
 #include "riscv.h"
 #include "type.h"
 #include "stdio.h"
-extern void* trap_vector;
+extern void* trap_vector_m;
+extern void* trap_vector_s;
 extern void kernel();
 
 void timer_load()
@@ -29,7 +30,7 @@ void start()
 
     
 
-    write_csr(mtvec, (reg_t)(&trap_vector) | VECTOR_MODE);
+    write_csr(mtvec, (reg_t)(&trap_vector_m) | VECTOR_MODE);
     
     write_csr(satp, 0);//禁用分页
     // delegate all interrupts and exceptions to supervisor mode.
@@ -37,7 +38,7 @@ void start()
     write_csr(mideleg, 0xffff);
     write_csr(sie, read_csr(sie)|SIE_SEIE | SIE_STIE | SIE_SSIE);
 
-    reg_t s = (reg_t)(&trap_vector) | VECTOR_MODE;
+    reg_t s = (reg_t)(&trap_vector_s) | VECTOR_MODE;
     write_csr(stvec, s);
 
     // configure Physical Memory Protection to give supervisor mode
