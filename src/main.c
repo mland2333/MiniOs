@@ -16,7 +16,7 @@ void kernel()
     //trap_init();
     //printf("here\n");
     user_init();
-    printf("here\n");
+    //printf("here\n");
     write_csr(sstatus, read_csr(sstatus) | SSTATUS_SPP | SSTATUS_SIE); 
     schedule();         //第一个进程
     while(1) {};

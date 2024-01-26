@@ -51,7 +51,7 @@ void make_process(void (*taskn)(void))
     {
         if(proc[i].state == EMPTY)
         {
-            proc[i].mcontext.ra = (reg_t)taskn;
+            //proc[i].mcontext.ra = (reg_t)taskn;
             proc[i].mcontext.sp = (reg_t)&proc_stack[i][STACK_SIZE];
             proc[i].mcontext.pc = (reg_t)taskn;
             proc[i].state = READY;
