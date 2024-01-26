@@ -1,36 +1,4 @@
-.macro reg_save base
-    sd ra, 0(\base)
-    sd sp, 8(\base)
-    sd gp, 16(\base)
-    sd tp, 24(\base)
-    sd t0, 32(\base)
-    sd t1, 40(\base)
-    sd t2, 48(\base)
-    sd s0, 56(\base)
-    sd s1, 64(\base)
-    sd a0, 72(\base)
-    sd a1, 80(\base)
-    sd a2, 88(\base)
-    sd a3, 96(\base)
-    sd a4, 104(\base)
-    sd a5, 112(\base)
-    sd a6, 120(\base)
-    sd a7, 128(\base)
-    sd s2, 136(\base)
-    sd s3, 144(\base)
-    sd s4, 152(\base)
-    sd s5, 160(\base)
-    sd s6, 168(\base)
-    sd s7, 176(\base)
-    sd s8, 184(\base)
-    sd s9, 192(\base)
-    sd s10, 200(\base)
-    sd s11, 208(\base)
-    sd t3, 216(\base)
-    sd t4, 224(\base)
-    sd t5, 232(\base)
-    sd t6, 240(\base)
-.endm
+
 
 .macro reg_restore base
     ld ra, 0(\base)
@@ -42,7 +10,6 @@
     ld t2, 48(\base)
     ld s0, 56(\base)
     ld s1, 64(\base)
-    ld a0, 72(\base)
     ld a1, 80(\base)
     ld a2, 88(\base)
     ld a3, 96(\base)
@@ -68,9 +35,10 @@
 .global switch_to
 
 switch_to:
-    csrw mscratch, a0   //a0 = &proc.context
+    csrw sscratch, a0   //a0 = &proc.context
     ld a1, 248(a0)      //context->pc to mepc
-    csrw mepc, a1
+    csrw sepc, a1
     reg_restore a0
+    ld a0, 72(a0)
 
-    mret
+    sret

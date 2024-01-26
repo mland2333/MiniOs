@@ -11,8 +11,7 @@ cpu mcpu;
 process proc[PROC_NUM];
 int proc_id = 0;
 void proc_init()
-{
-    write_csr(mscratch, 0);
+{ 
     for(int i = 0; i < PROC_NUM; i++)
     {
         proc[i].state = EMPTY;
@@ -23,10 +22,11 @@ void proc_init()
 void yield()
 {
     mcpu.proc->state = READY;
+    printf("yield\n");
     schedule();
 }
 
-
+extern void switch_to(void*);
 void schedule()
 {
     int i = proc_id;
@@ -53,6 +53,7 @@ void make_process(void (*taskn)(void))
         {
             proc[i].mcontext.ra = (reg_t)taskn;
             proc[i].mcontext.sp = (reg_t)&proc_stack[i][STACK_SIZE];
+            proc[i].mcontext.pc = (reg_t)taskn;
             proc[i].state = READY;
             break;
         }

@@ -9,7 +9,8 @@ void daley(int count){
 
 
 void task0()
-{   
+{  
+    printf("task0\n");
     for(int i = 0; i < 10000; i++)
     {
         printf("task0:  %d\n", i);

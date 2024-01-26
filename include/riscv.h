@@ -48,22 +48,22 @@ extern char _begin[];
 
 #define read_csr(reg) ({\
     reg_t x;\
-    asm volatile("csrr %0" ## #reg : "=r" (x));\
+    asm volatile("csrr %0, " #reg : "=r" (x));\
     x;\
 })
 
 #define write_csr(reg, value) do{\
-    asm volatile("csrw reg, %0" : : "r" (value));\
+    asm volatile("csrw " #reg ", %0" : : "r" (value));\
 }while(0)
 
 #define read_gr(reg) ({\
     reg_t x;\
-    asm volatile("mv %0, reg" : "=r" (x));\
+    asm volatile("mv %0," #reg : "=r" (x));\
     x;\
 })
 
 #define write_gr(reg, value) do{\
-    asm volatile("mv reg, %0" : : "r" (value));\
+    asm volatile("mv " #reg ", %0" : : "r" (value));\
 }while(0)
 
 
