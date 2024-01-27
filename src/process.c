@@ -2,14 +2,16 @@
 #include "process.h"
 #include "common.h"
 #include "riscv.h"
-
+#include "lock.h"
 
 uint8_t __attribute__((aligned(16))) proc_stack[PROC_NUM][STACK_SIZE];
 
-cpu mcpu;
+cpu mcpu[MAX_CPU];
 
 process proc[PROC_NUM];
+//lock proclock[PROC_NUM];
 int proc_id = 0;
+lock proclock;
 void proc_init()
 { 
     for(int i = 0; i < PROC_NUM; i++)
@@ -21,14 +23,15 @@ void proc_init()
 
 void yield()
 {
-    mcpu.proc->state = READY;
-    printf("yield\n");
+    mcpu[read_gr(tp)].proc->state = READY;
+    //printf("yield\n");
     schedule();
 }
 
 extern void switch_to(void*);
 void schedule()
 {
+    acquire(&proclock);
     int i = proc_id;
     while(proc_id < PROC_NUM)
     {   
@@ -36,7 +39,8 @@ void schedule()
         {
             proc[i].state = RUNNING;
             proc_id = i + 1;
-            mcpu.proc = &proc[i];
+            release(&proclock);
+            mcpu[read_gr(tp)].proc = &proc[i];
             switch_to(&proc[i].mcontext);
         }
         i++;

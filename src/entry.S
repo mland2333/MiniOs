@@ -7,7 +7,8 @@
     
     csrr    a0, mhartid
     mv      tp, a0
-    bnez    tp, park        //确保运行在单核心上
+    li      a1, 0
+    //bne     tp, a1, park        //确保运行在单核心上
 
     la      sp, stacks
     addi    a0, a0, 1       
@@ -16,8 +17,8 @@
     add     sp, sp, a1
     j       start           //开始运行
 
-park:
-    wfi
-    j park
+//park:
+//   wfi
+//   j park
 
     .end

@@ -4,7 +4,7 @@
     ld ra, 0(\base)
     ld sp, 8(\base)
     ld gp, 16(\base)
-    ld tp, 24(\base)
+    //ld tp, 24(\base)
     ld t0, 32(\base)
     ld t1, 40(\base)
     ld t2, 48(\base)
