@@ -52,7 +52,7 @@ typedef struct{
 }cpu;
 
 void yield();
-void switch_to(context *new_context);
+void switch_to(void*);
 void proc_init();
 void schedule();
 void make_process();

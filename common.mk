@@ -5,7 +5,8 @@ BUILD_DIR = $(OS_HOME)/build
 CFLAGS = -nostdlib -fno-builtin -march=rv64imac_zicsr_zifencei -mabi=lp64 -g -Wall -mcmodel=medany  -I$(INC_DIR)
 
 QEMU = qemu-system-riscv64
-QFLAGS = -nographic -smp 1 -machine virt -bios none
+QFLAGS = -nographic -smp 3 -machine virt -bios none
+QFLAGS += -global virtio-mmio.force-legacy=false
 
 GDB = gdb-multiarch
 CC = ${CROSS_COMPILE}gcc

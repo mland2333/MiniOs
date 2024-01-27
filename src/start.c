@@ -8,8 +8,10 @@ extern void kernel();
 
 void timer_load()
 {
+    //printf("time_load\n");
     int id = read_csr(mhartid);
     *(uint64_t*)CLINT_MTIMECMP(id) = *(uint64_t*)CLINT_MTIME + TIME_INTERVAL;
+    //printf("time_load\n");
 }
 
 void timer_init()

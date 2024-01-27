@@ -1,6 +1,9 @@
 #include "stdio.h"
 #include "defs.h"
 #include "type.h"
+#include "lock.h"
+
+lock printflock;
 int printf(const char* fmt, ...)
 {
      va_list ap;
@@ -12,6 +15,7 @@ int printf(const char* fmt, ...)
      char buf[33];
      int res = 0;
      int j = 0;
+    acquire(&printflock);
      for(int i = 0; fmt[i]!='\0'; i++)
      {
          if(fmt[i] != '%')
@@ -88,6 +92,7 @@ int printf(const char* fmt, ...)
 
          }
      }
+    release(&printflock);
      return res;
 }
 

@@ -32,6 +32,7 @@ void timer_handler_test()
 
 void trans_to_s()
 {
+    //printf("trantos\n");
     reg_t m_status = read_csr(mstatus);
     int flag =(((m_status & MSTATUS_MPP_S) == 0)? 0:SSTATUS_SPP);
     reg_t s_status = read_csr(sstatus);
@@ -40,4 +41,5 @@ void trans_to_s()
     write_csr(mepc, &yield);
     m_status &= ~MSTATUS_MPP_MASK;
     write_csr(mstatus, m_status|MSTATUS_MPP_S);
+    //printf("trantos\n");
 }
