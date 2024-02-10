@@ -8,7 +8,7 @@ uint8_t __attribute__((aligned(16))) proc_stack[PROC_NUM][STACK_SIZE];
 
 cpu mcpu[MAX_CPU];
 
-process proc[PROC_NUM];
+//process proc[PROC_NUM];
 //lock proclock[PROC_NUM];
 int proc_id = 0;
 lock proclock;

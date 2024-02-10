@@ -5,3 +5,4 @@ typedef unsigned int  uint32_t;
 typedef unsigned long long uint64_t;
 
 typedef uint64_t reg_t;
+typedef uint32_t pid_t;
