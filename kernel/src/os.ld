@@ -8,7 +8,8 @@ SECTIONS
     PROVIDE(_begin = .);
     .text : {
         *(.text .text.*)
-
+    . = ALIGN(0x1000);
+    PROVIDE(_text = .)
     }
     .rodata : {
         
@@ -24,7 +25,7 @@ SECTIONS
         *(.sbss .sbss.*)
         *(COMMON)
     }
-
+    . = ALIGN(0x1000);
     PROVIDE(_end = .);
     
 }

@@ -1,6 +1,6 @@
 #pragma once
 #include "type.h"
-
+#include "list.h"
 #define PROC_NUM 16
 
 typedef struct {
@@ -44,12 +44,25 @@ typedef struct{
     uint64_t root_pagetable;
     context mcontext;
     int state;
+    pid_t pid;
     //int id;
 }process;
+
+
+
+/*typedef struct{
+    uint64_t sp;
+}*/
 
 typedef struct{
     process* proc;
 }cpu;
+
+
+pid_t alloc_pid();
+process* alloc_proc();
+int fork();
+
 
 void yield();
 void switch_to(void*);
