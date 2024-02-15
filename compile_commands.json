@@ -1,0 +1,230 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/riscv64-unknown-elf-gcc",
+      "-fno-builtin",
+      "-march=rv64imac_zicsr_zifencei",
+      "-mabi=lp64",
+      "-g",
+      "-Wall",
+      "-mcmodel=medany",
+      "-I/home/mland/os/kernel/include",
+      "-c",
+      "-o",
+      "/home/mland/os/build/trap_handler.o",
+      "/home/mland/os/kernel/src/trap_handler.S"
+    ],
+    "directory": "/home/mland/os",
+    "file": "/home/mland/os/kernel/src/trap_handler.S",
+    "output": "/home/mland/os/build/trap_handler.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/riscv64-unknown-elf-gcc",
+      "-fno-builtin",
+      "-march=rv64imac_zicsr_zifencei",
+      "-mabi=lp64",
+      "-g",
+      "-Wall",
+      "-mcmodel=medany",
+      "-I/home/mland/os/kernel/include",
+      "-c",
+      "-o",
+      "/home/mland/os/build/page.o",
+      "/home/mland/os/kernel/src/page.c"
+    ],
+    "directory": "/home/mland/os",
+    "file": "/home/mland/os/kernel/src/page.c",
+    "output": "/home/mland/os/build/page.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/riscv64-unknown-elf-gcc",
+      "-fno-builtin",
+      "-march=rv64imac_zicsr_zifencei",
+      "-mabi=lp64",
+      "-g",
+      "-Wall",
+      "-mcmodel=medany",
+      "-I/home/mland/os/kernel/include",
+      "-c",
+      "-o",
+      "/home/mland/os/build/lock.o",
+      "/home/mland/os/kernel/src/lock.c"
+    ],
+    "directory": "/home/mland/os",
+    "file": "/home/mland/os/kernel/src/lock.c",
+    "output": "/home/mland/os/build/lock.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/riscv64-unknown-elf-gcc",
+      "-fno-builtin",
+      "-march=rv64imac_zicsr_zifencei",
+      "-mabi=lp64",
+      "-g",
+      "-Wall",
+      "-mcmodel=medany",
+      "-I/home/mland/os/kernel/include",
+      "-c",
+      "-o",
+      "/home/mland/os/build/switch.o",
+      "/home/mland/os/kernel/src/switch.S"
+    ],
+    "directory": "/home/mland/os",
+    "file": "/home/mland/os/kernel/src/switch.S",
+    "output": "/home/mland/os/build/switch.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/riscv64-unknown-elf-gcc",
+      "-fno-builtin",
+      "-march=rv64imac_zicsr_zifencei",
+      "-mabi=lp64",
+      "-g",
+      "-Wall",
+      "-mcmodel=medany",
+      "-I/home/mland/os/kernel/include",
+      "-c",
+      "-o",
+      "/home/mland/os/build/main.o",
+      "/home/mland/os/kernel/src/main.c"
+    ],
+    "directory": "/home/mland/os",
+    "file": "/home/mland/os/kernel/src/main.c",
+    "output": "/home/mland/os/build/main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/riscv64-unknown-elf-gcc",
+      "-fno-builtin",
+      "-march=rv64imac_zicsr_zifencei",
+      "-mabi=lp64",
+      "-g",
+      "-Wall",
+      "-mcmodel=medany",
+      "-I/home/mland/os/kernel/include",
+      "-c",
+      "-o",
+      "/home/mland/os/build/entry.o",
+      "/home/mland/os/kernel/src/entry.S"
+    ],
+    "directory": "/home/mland/os",
+    "file": "/home/mland/os/kernel/src/entry.S",
+    "output": "/home/mland/os/build/entry.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/riscv64-unknown-elf-gcc",
+      "-fno-builtin",
+      "-march=rv64imac_zicsr_zifencei",
+      "-mabi=lp64",
+      "-g",
+      "-Wall",
+      "-mcmodel=medany",
+      "-I/home/mland/os/kernel/include",
+      "-c",
+      "-o",
+      "/home/mland/os/build/start.o",
+      "/home/mland/os/kernel/src/start.c"
+    ],
+    "directory": "/home/mland/os",
+    "file": "/home/mland/os/kernel/src/start.c",
+    "output": "/home/mland/os/build/start.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/riscv64-unknown-elf-gcc",
+      "-fno-builtin",
+      "-march=rv64imac_zicsr_zifencei",
+      "-mabi=lp64",
+      "-g",
+      "-Wall",
+      "-mcmodel=medany",
+      "-I/home/mland/os/kernel/include",
+      "-c",
+      "-o",
+      "/home/mland/os/build/process.o",
+      "/home/mland/os/kernel/src/process.c"
+    ],
+    "directory": "/home/mland/os",
+    "file": "/home/mland/os/kernel/src/process.c",
+    "output": "/home/mland/os/build/process.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/riscv64-unknown-elf-gcc",
+      "-fno-builtin",
+      "-march=rv64imac_zicsr_zifencei",
+      "-mabi=lp64",
+      "-g",
+      "-Wall",
+      "-mcmodel=medany",
+      "-I/home/mland/os/kernel/include",
+      "-c",
+      "-o",
+      "/home/mland/os/build/stdio.o",
+      "/home/mland/os/kernel/src/stdio.c"
+    ],
+    "directory": "/home/mland/os",
+    "file": "/home/mland/os/kernel/src/stdio.c",
+    "output": "/home/mland/os/build/stdio.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/riscv64-unknown-elf-gcc",
+      "-fno-builtin",
+      "-march=rv64imac_zicsr_zifencei",
+      "-mabi=lp64",
+      "-g",
+      "-Wall",
+      "-mcmodel=medany",
+      "-I/home/mland/os/kernel/include",
+      "-c",
+      "-o",
+      "/home/mland/os/build/user.o",
+      "/home/mland/os/kernel/src/user.c"
+    ],
+    "directory": "/home/mland/os",
+    "file": "/home/mland/os/kernel/src/user.c",
+    "output": "/home/mland/os/build/user.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/riscv64-unknown-elf-gcc",
+      "-fno-builtin",
+      "-march=rv64imac_zicsr_zifencei",
+      "-mabi=lp64",
+      "-g",
+      "-Wall",
+      "-mcmodel=medany",
+      "-I/home/mland/os/kernel/include",
+      "-c",
+      "-o",
+      "/home/mland/os/build/trap.o",
+      "/home/mland/os/kernel/src/trap.c"
+    ],
+    "directory": "/home/mland/os",
+    "file": "/home/mland/os/kernel/src/trap.c",
+    "output": "/home/mland/os/build/trap.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/riscv64-unknown-elf-gcc",
+      "-fno-builtin",
+      "-march=rv64imac_zicsr_zifencei",
+      "-mabi=lp64",
+      "-g",
+      "-Wall",
+      "-mcmodel=medany",
+      "-I/home/mland/os/kernel/include",
+      "-c",
+      "-o",
+      "/home/mland/os/build/uart.o",
+      "/home/mland/os/kernel/src/uart.c"
+    ],
+    "directory": "/home/mland/os",
+    "file": "/home/mland/os/kernel/src/uart.c",
+    "output": "/home/mland/os/build/uart.o"
+  }
+]
