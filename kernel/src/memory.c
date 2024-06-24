@@ -1,4 +1,4 @@
-#include "memory.h"
+/*#include "memory.h"
 #include "type.h"
 
 mem_block mem_block_free;
@@ -27,4 +27,4 @@ uint64_t early_memory_alloc(int size, int align){
 void memory_init(){
   mem_block_init();
 }
-void mem_block_used_to_buddy();
+void mem_block_used_to_buddy();*/

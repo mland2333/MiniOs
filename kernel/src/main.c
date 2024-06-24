@@ -12,11 +12,10 @@ volatile static int started = 0;
 void kernel() {
   if (read_gr(tp) == 0) {
     uart_init();
-    memory_init();
-    // page_init();        //物理页初始化
+    page_init();        //物理页初始化
     // printf("here\n");
     proc_init(); // 进程初始化
-    // trap_init();
+    /* trap_init(); */
     // printf("here\n");
     user_init();
     // printf("here\n");

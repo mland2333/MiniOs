@@ -2,6 +2,7 @@
 #include "riscv.h"
 #include "type.h"
 #include "stdio.h"
+#include "memory.h"
 extern char _end[];
 void* page_start;
 void* heap_start;

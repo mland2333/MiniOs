@@ -7,7 +7,7 @@
     
     csrr    a0, mhartid
     mv      tp, a0
-    li      a1, 0
+    //li      a1, 0
     //bne     tp, a1, park        //确保运行在单核心上
 
     la      sp, stacks
