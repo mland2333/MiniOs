@@ -23,6 +23,7 @@ void page_init()
 
 void page_free(void* pa)
 {
+    if(pa == 0) return;
     NEXT(pa) = (uint64_t)page_start;
     page_start = pa;
 }

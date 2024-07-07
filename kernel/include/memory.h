@@ -4,6 +4,12 @@
 
 extern char _begin[];
 #define MAXPA ((uint64_t)_begin + (1 << ((10 + 10 + 8) - 1)))
+
+#define vaddr_t uint64_t
+#define paddr_t uint64_t
+
+#define ptr_t uint64_t
+
 /*
 enum{NORMAL, RESERVED};
 

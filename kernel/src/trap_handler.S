@@ -77,7 +77,7 @@ trap_vector_s:
 
 .global timer_handler
 timer_handler:
-    //交换t0和mscratch，其中mscratch中是当前进程上下文地址
+    //交换t0和sscratch，其中sscratch中是当前进程上下文地址
     csrrw t0, sscratch, t0  
     //存储当前进程context
     reg_save t0

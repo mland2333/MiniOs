@@ -45,6 +45,7 @@ typedef struct{
     context mcontext;
     int state;
     pid_t pid;
+    void* kstack_address;
     //int id;
 }process;
 

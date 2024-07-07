@@ -9,7 +9,7 @@ SECTIONS
     .text : {
         *(.text .text.*)
     . = ALIGN(0x1000);
-    PROVIDE(_text = .)
+    PROVIDE(_text = .);
     }
     .rodata : {
         
